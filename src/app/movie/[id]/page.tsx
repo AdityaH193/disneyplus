@@ -31,7 +31,7 @@ export default function MovieDetailPage() {
     }
   }, [movieId])
 
-  const loadMovieDetails = async () => {
+  const loadMovieDetails = useCallback(async () => {
     try {
       setLoading(true)
       const response = await fetch(`/api/movies/${movieId}`)
