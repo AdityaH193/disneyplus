@@ -48,6 +48,7 @@ export interface Movie {
   vote_average: number
   genre_ids: number[]
   adult: boolean
+  original_language: string
 }
 
 export interface MovieDetails extends Movie {
