@@ -35,7 +35,7 @@ export const authOptions = {
     signUp: '/signup',
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user }: any) {
       if (user) {
         token.id = user.id
       }
