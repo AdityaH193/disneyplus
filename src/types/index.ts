@@ -189,4 +189,5 @@ export interface AppActions {
   removeFromWatchlist: (movieId: number) => void
   setLoading: (loading: boolean) => void
   setError: (error: string | null) => void
+  clearUserData: () => void
 }
