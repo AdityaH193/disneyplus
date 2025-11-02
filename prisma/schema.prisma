@@ -47,7 +47,7 @@ model MoodHistory {
 model Favorite {
   id        String   @id @default(cuid())
   userId    String
-  movieId   Int      @unique
+  movieId   Int
   movieData Json     // Store complete movie data as JSON
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -59,7 +59,7 @@ model Favorite {
 model Watchlist {
   id        String   @id @default(cuid())
   userId    String
-  movieId   Int      @unique
+  movieId   Int
   movieData Json     // Store complete movie data as JSON
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
