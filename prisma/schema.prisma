@@ -77,6 +77,8 @@ model RecommendationCache {
   createdAt        DateTime @default(now())
   user             User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  @@index([mood, userId])
+  @@index([expiresAt])
   @@map("recommendation_cache")
 }
 
