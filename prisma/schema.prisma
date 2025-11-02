@@ -19,7 +19,6 @@ model User {
   updatedAt     DateTime  @updatedAt
 
   // Mood preferences
-  favoriteMoods String[]  // Array of user's favorite mood categories
   moodHistory   MoodHistory[]
 
   // User content
