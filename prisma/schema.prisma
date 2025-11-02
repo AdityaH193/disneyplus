@@ -18,7 +18,7 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  // Mood preferences
+  // Mood history
   moodHistory   MoodHistory[]
 
   // User content
@@ -36,8 +36,8 @@ model User {
 model MoodHistory {
   id        String   @id @default(cuid())
   userId    String
-  mood      String   // Detected mood
-  input     String   // User's mood description
+  mood      String
+  input     String
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -48,34 +48,53 @@ model Favorite {
   id        String   @id @default(cuid())
   userId    String
   movieId   Int
-  movieData Json     // Store complete movie data as JSON
+  movieData Json
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    @@map("favorites")
+  @@map("favorites")
 }
 
 model Watchlist {
   id        String   @id @default(cuid())
   userId    String
   movieId   Int
-  movieData Json     // Store complete movie data as JSON
+  movieData Json
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    @@map("watchlists")
+  @@map("watchlists")
 }
 
 model RecommendationCache {
   id               String   @id @default(cuid())
-  mood             String   // Mood category
-  userId           String?  // Can be null for general mood recommendations
-  recommendations  Json     // Store cached recommendations as JSON
-  expiresAt        DateTime // Cache expiration time
+  mood             String
+  userId           String?
+  recommendations  Json
+  expiresAt        DateTime
   createdAt        DateTime @default(now())
   user             User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    @@map("recommendation_cache")
+  @@map("recommendation_cache")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("accounts")
 }
 
 model Session {
@@ -88,29 +107,10 @@ model Session {
   @@map("sessions")
 }
 
-model Account {
-  id                String  @id @default(cuid())
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.Text
-  session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-    @@map("accounts")
-}
-
 model VerificationToken {
   identifier String
   token      String   @unique
   expires    DateTime
 
-    @@map("verification_tokens")
+  @@map("verification_tokens")
 }
