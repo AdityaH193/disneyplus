@@ -193,4 +193,8 @@ export interface AppActions {
   addRecommendations: (newRecommendations: Recommendation[]) => void
   updateRecommendationScore: (movieId: number, newScore: number) => void
   resetError: () => void
+  isFavorite: (movieId: number) => boolean
+  isInWatchlist: (movieId: number) => boolean
+  getFavoriteMovies: () => Movie[]
+  getWatchlistMovies: () => Movie[]
 }
