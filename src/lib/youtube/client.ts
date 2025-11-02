@@ -10,7 +10,7 @@ if (!YOUTUBE_API_KEY) {
 export class YouTubeClient {
   private static async fetchYouTube<T>(endpoint: string, params: Record<string, string> = {}): Promise<T> {
     const url = new URL(`${YOUTUBE_API_BASE}${endpoint}`)
-    url.searchParams.set('key', YOUTUBE_API_KEY)
+    url.searchParams.set('key', YOUTUBE_API_KEY || '')
 
     Object.entries(params).forEach(([key, value]) => {
       if (value) url.searchParams.set(key, value)
