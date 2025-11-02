@@ -48,7 +48,7 @@ export default function MovieDetailPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [movieId])
 
   const loadTrailer = async (title: string, year?: string) => {
     try {
