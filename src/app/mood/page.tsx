@@ -54,8 +54,8 @@ export default function MoodFinderPage() {
             Find Your Perfect Movie
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Tell us how you're feeling and our AI will recommend the perfect movies for your mood.
-            Whether you're happy, sad, excited, or nostalgic, we've got you covered.
+            Tell us how you&apos;re feeling and our AI will recommend the perfect movies for your mood.
+            Whether you&apos;re happy, sad, excited, or nostalgic, we&apos;ve got you covered.
           </p>
         </div>
 
