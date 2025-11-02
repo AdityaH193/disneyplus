@@ -190,4 +190,7 @@ export interface AppActions {
   setLoading: (loading: boolean) => void
   setError: (error: string | null) => void
   clearUserData: () => void
+  addRecommendations: (newRecommendations: Recommendation[]) => void
+  updateRecommendationScore: (movieId: number, newScore: number) => void
+  resetError: () => void
 }
