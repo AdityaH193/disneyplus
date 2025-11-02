@@ -112,6 +112,5 @@ model VerificationToken {
   token      String   @unique
   expires    DateTime
 
-  @@unique([identifier, token])
-  @@map("verification_tokens")
+    @@map("verification_tokens")
 }
